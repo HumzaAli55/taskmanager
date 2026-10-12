@@ -20,7 +20,7 @@ def create_task(
     current_user: User = Depends(get_current_user),
     session: Session = Depends(get_session),
 ) -> TaskResponse :
-    task = Task(user_id=current_user.id, **data.model_dump)
+    task = Task(user_id=current_user.id, **data.model_dump())
     session.add(task)
     session.commit()
     session.refresh(task)
